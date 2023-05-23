@@ -1,9 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ courses }) => {
   return (
     <div>
-      <h1>This is sidebar</h1>
+      {courses.map((course) => (
+        <div className="m-2 p-2 bg-slate-100 cursor-pointer rounded-lg">
+          <Link to={`course/${course.id}`}>{course.name}</Link>
+        </div>
+      ))}
     </div>
   );
 };

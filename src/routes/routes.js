@@ -3,6 +3,7 @@ import Main from "../layout/Main/Main";
 import Home from "../components/Home/Home";
 import NoPageFound from "../components/NoPageFound/NoPageFound";
 import Courses from "../components/Courses/Courses";
+import SingleCourse from "../components/SingleCourse/SingleCourse";
 
 export const routes = createBrowserRouter([
   {
@@ -23,6 +24,13 @@ export const routes = createBrowserRouter([
       {
         path: "*",
         element: <NoPageFound />,
+      },
+      {
+        path: "courses/course/:id",
+        loader: async ({ params }) => {
+          return fetch(`http://localhost:5000/${params.id}`);
+        },
+        element: <SingleCourse />,
       },
     ],
   },
