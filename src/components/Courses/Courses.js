@@ -8,7 +8,7 @@ const Courses = () => {
   return (
     <div className="grid grid-cols-[1fr_5fr]">
       <div>
-        <Sidebar key={courses.id} courses={courses} />
+        <Sidebar courses={courses} />
       </div>
       <div className="grid grid-cols-3 gap-3">
         {courses.map((course) => (

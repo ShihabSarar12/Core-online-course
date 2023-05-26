@@ -4,6 +4,7 @@ import Home from "../components/Home/Home";
 import NoPageFound from "../components/NoPageFound/NoPageFound";
 import Courses from "../components/Courses/Courses";
 import SingleCourse from "../components/SingleCourse/SingleCourse";
+import ConfirmPurchase from "../components/ConfirmPurchase/ConfirmPurchase";
 
 export const routes = createBrowserRouter([
   {
@@ -31,6 +32,13 @@ export const routes = createBrowserRouter([
           return fetch(`http://localhost:5000/${params.id}`);
         },
         element: <SingleCourse />,
+      },
+      {
+        path: "courses/course/:id/purchase",
+        loader: async ({ params }) => {
+          return fetch(`http://localhost:5000/${params.id}`);
+        },
+        element: <ConfirmPurchase />,
       },
     ],
   },

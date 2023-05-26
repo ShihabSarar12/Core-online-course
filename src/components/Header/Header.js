@@ -1,8 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo-no-background.png";
+import UserContext, { AuthContext } from "../../context/UserContext";
+import User from "../User/User";
+import Login from "../Login/Login";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1 mx-5">
@@ -11,13 +17,6 @@ const Header = () => {
         </Link>
       </div>
       <div className="flex-none mx-5">
-        <div className="form-control">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input input-bordered"
-          />
-        </div>
         <ul className="menu menu-horizontal px-1">
           <li>
             <Link to="/">Home</Link>
@@ -26,30 +25,17 @@ const Header = () => {
             <Link to="courses">Courses</Link>
           </li>
         </ul>
-        <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="" alt="profile" />
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+        {user ? (
+          <User />
+        ) : (
+          <button
+            onClick={() => {
+              navigate("Login");
+            }}
           >
-            <li>
-              <Link to="profile" className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="settings">Settings</Link>
-            </li>
-            <li>
-              <Link>Logout</Link>
-            </li>
-          </ul>
-        </div>
+            Login
+          </button>
+        )}
       </div>
     </div>
   );
