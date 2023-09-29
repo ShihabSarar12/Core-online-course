@@ -15,6 +15,9 @@ const User = () => {
           className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
         >
           <li>
+            {
+              //TODO Have to create profile component.
+            }
             <Link to="profile" className="justify-between">
               Profile
               <span className="badge">New</span>

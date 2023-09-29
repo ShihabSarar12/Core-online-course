@@ -8,7 +8,8 @@ import Login from "../Login/Login";
 const Header = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  console.log(user);
+  console.log("User: " + user);
+
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1 mx-5">
@@ -30,7 +31,7 @@ const Header = () => {
         ) : (
           <button
             onClick={() => {
-              navigate("Login");
+              navigate("login");
             }}
           >
             Login

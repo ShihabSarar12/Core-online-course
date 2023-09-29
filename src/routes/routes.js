@@ -5,6 +5,7 @@ import NoPageFound from "../components/NoPageFound/NoPageFound";
 import Courses from "../components/Courses/Courses";
 import SingleCourse from "../components/SingleCourse/SingleCourse";
 import ConfirmPurchase from "../components/ConfirmPurchase/ConfirmPurchase";
+import Login from "../components/Login/Login";
 
 export const routes = createBrowserRouter([
   {
@@ -39,6 +40,14 @@ export const routes = createBrowserRouter([
           return fetch(`http://localhost:5000/${params.id}`);
         },
         element: <ConfirmPurchase />,
+      },
+      {
+        path: "register",
+        element: <Login name="register" />,
+      },
+      {
+        path: "login",
+        element: <Login name="login" />,
       },
     ],
   },
